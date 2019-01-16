@@ -8,9 +8,20 @@ running along a route.
 
 Parameters
 ----------
+    first : filename
+        name of the .npz file to open (including extension)
 
-
-
+Returns
+-------
+    dfDict
+        A dictionary containing pandas arrays with the timestamps and GPS
+        data (zero-padded so they're uniform size)
+        
+Raises
+------
+    IOError
+        When file not found
+    
 """
 
 import numpy as np
