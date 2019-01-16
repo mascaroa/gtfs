@@ -55,10 +55,6 @@ def loadRawData(filename):
     
     return dfDict
             
-            
-
-Dec23 = loadRawData('/Users/amascaro_1/Dropbox/GTFS_AARON/20181223.npz')
-
 
 
 
