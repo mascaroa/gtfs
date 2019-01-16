@@ -10,6 +10,12 @@ Parameters
 ----------
     first : filename
         name of the .npz file to open (including extension)
+    second : year
+        Year when data was genereated
+    third : month
+        Month when data was generated
+    fourth : day
+        Day when data was generate
 
 Returns
 -------
@@ -26,17 +32,20 @@ Raises
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import time
+from datetime import date
 
-def loadRawData(filename):
+
+def loadRawData(filename,year,month,day):
     # First let's load the data into numpy arrays
     dataIn = np.load(filename)
     
     # Copy it into a less shitty format (not a NpzFile class)
     newDataIn = dict(dataIn)
     
-    # Timestamp at midnight on december 23rd, 2018
-    t0 = 1545523200
+    # Get the (Unix) timestamp for this day's data:
+    d = date(year, month, day)
+    t0 = time.mktime(d.timetuple())
     
     # Bus stop we care about (kind of...):
     # 45.538254 -73.601215
@@ -66,6 +75,3 @@ def loadRawData(filename):
     
     return dfDict
             
-
-
-
